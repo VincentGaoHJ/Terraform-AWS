@@ -1,3 +1,15 @@
+# Terraform Related
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate*
+
+# IDEA Folder
+.idea/
+
+# Reference Folder
+/ref
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
