@@ -27,3 +27,13 @@ output "external_user_iam_access_key_id" {
 output "external_user_iam_access_key_secret" {
   value = aws_iam_access_key.external_user_keys.encrypted_secret
 }
+
+//Multiple user list
+output "multiple_users" {
+  value = aws_iam_user.multiple_users[*]
+}
+
+// Policy for multiple created users
+output "multiple_user_policy_arn" {
+  value = aws_iam_user_policy.multiple_user_policy[*]
+}
