@@ -1,6 +1,7 @@
 # Terraform Related
 .terraform/
 .terraform.lock.hcl
+terraform.tfstate*
 
 # IDEA Folder
 .idea/
