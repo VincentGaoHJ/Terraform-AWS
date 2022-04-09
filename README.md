@@ -33,6 +33,7 @@ This repository is aim to create AWS Cloud Resources through Terraform and orche
 - Access key ID & Secret Access Key of that account
 - An AWS IAM role with S3 permissions
 - Need to install `Keybase` in our local
+
 ---
 
 ## 3. Folder Structure
@@ -56,18 +57,32 @@ This repository is aim to create AWS Cloud Resources through Terraform and orche
   ```shell
   keybase pgp gen
   ```
-- then give the reference of this Keybase key in your terraform code keybase:username_of_keybase 
-- Then terraform apply 
+- then give the reference of this Keybase key in your terraform code keybase:username_of_keybase
+- Then terraform apply
 - Then we need to get the decrypted password
 
   ```shell
   terraform output -raw password | base64 --decode | keybase pgp decrypt
   ```
-  - for `external_user_iam_access_key_secret`
+    - for `external_user_iam_access_key_secret`
   ```shell
   terraform output -raw external_user_iam_access_key_secret | base64 -d | keybase pgp decrypt
   ```
 
+### Manage existing resources(Users)
+
+- Create those users in Terraform
+- Import those users into your Terraform state
+- Run terraform plan until it returns no changes
+- Commit to source control
+
+But for now, The command currently can only import one resource at a time. This means you can't yet point Terraform
+import to an entire collection of resources such as an AWS VPC and import all of it. This workflow will be improved in a
+future version of Terraform.
+
+For bulk import run `import_user.sh`:
+
+![Import exist users](static/import_user.jpg)
 
 ## Terraform script
 

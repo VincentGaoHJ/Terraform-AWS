@@ -3,7 +3,6 @@ resource "aws_iam_user" "multiple_users" {
   name     = each.value
 }
 
-
 resource "aws_iam_user_policy" "multiple_user_policy" {
   for_each = toset(var.multiple_user_lst)
   name     = "multiple_user_policy"
