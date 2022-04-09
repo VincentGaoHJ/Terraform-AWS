@@ -16,3 +16,4 @@ module "s3" {
   bucket_name = "meta-trading-vincent-s3-bucket-demo" # bucket name should be unique
 }
 
+
