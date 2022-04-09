@@ -32,7 +32,7 @@ This repository is aim to create AWS Cloud Resources through Terraform and orche
 
 - Access key ID & Secret Access Key of that account
 - An AWS IAM role with S3 permissions
-
+- Need to install `Keybase` in our local
 ---
 
 ## 3. Folder Structure
@@ -49,6 +49,25 @@ This repository is aim to create AWS Cloud Resources through Terraform and orche
 ## 4. Implementation
 
 ### 4.1 Create an S3 bucket using Terraform
+
+### 4.2 Pgp key in terraform
+
+- need to create Keybase key by using
+  ```shell
+  keybase pgp gen
+  ```
+- then give the reference of this Keybase key in your terraform code keybase:username_of_keybase 
+- Then terraform apply 
+- Then we need to get the decrypted password
+
+  ```shell
+  terraform output -raw password | base64 --decode | keybase pgp decrypt
+  ```
+  - for `external_user_iam_access_key_secret`
+  ```shell
+  terraform output -raw external_user_iam_access_key_secret | base64 -d | keybase pgp decrypt
+  ```
+
 
 ## Terraform script
 
@@ -74,4 +93,5 @@ This repository is aim to create AWS Cloud Resources through Terraform and orche
 # Reference
 
 - [How To Create AWS S3 Bucket Using Terraform](https://www.bacancytechnology.com/blog/aws-s3-bucket-using-terraform)
-- 
+- [A Terraform module that creates a tagged S3 bucket and an IAM user/key with access to the bucket](https://github.com/turnerlabs/terraform-s3-user)
+- [How to Use PGP to Encrypt Your Terraform Secrets](https://menendezjaume.com/post/gpg-encrypt-terraform-secrets/)
