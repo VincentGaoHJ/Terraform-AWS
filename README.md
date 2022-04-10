@@ -103,6 +103,17 @@ For bulk import run `import_user.sh`:
     terraform destroy
     ```
 
+# Issues
+
+Below are some technical debt during the implementation:
+
+- Destroy AWS resources of a failed/canceled Terraform apply, There are no good solutions at the moment. Your only
+  options are ugly workarounds such as:
+    - Manually find everything that got deployed, delete it, and re-run `terraform apply`.
+    - Manually find everything that got deployed, and for each such resource, run `terraform import`.
+    - GitHub
+      Track: [Incremental backend persistence during Terraform operations](https://github.com/hashicorp/terraform/issues/20718)
+
 ---
 
 # Reference
