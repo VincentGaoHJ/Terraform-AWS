@@ -6,8 +6,8 @@ data "aws_iam_policy_document" "lambda_permissions" {
     ]
 
     resources = [
-      "${var.source_bucket}/${var.source_folder}",
-      "${var.source_bucket}/${var.source_folder}/*",
+      "arn:aws:s3:::${var.source_bucket}/${var.source_folder}",
+      "arn:aws:s3:::${var.source_bucket}/${var.source_folder}*",
     ]
   }
 
@@ -20,8 +20,8 @@ data "aws_iam_policy_document" "lambda_permissions" {
     ]
 
     resources = [
-      "${var.target_bucket}/${var.target_folder}",
-      "${var.target_bucket}/${var.target_folder}/*",
+      "arn:aws:s3:::${var.target_bucket}/${var.target_folder}",
+      "arn:aws:s3:::${var.target_bucket}/${var.target_folder}*",
     ]
   }
 }
