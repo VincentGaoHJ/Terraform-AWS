@@ -1,4 +1,15 @@
 data "aws_iam_policy_document" "lambda_permissions" {
+
+  statement {
+    actions = [
+      "s3:ListBucket",
+    ]
+    resources = [
+      "arn:aws:s3:::${var.source_bucket}",
+      "arn:aws:s3:::${var.target_bucket}",
+    ]
+  }
+
   statement {
     actions = [
       "s3:ListBucket",

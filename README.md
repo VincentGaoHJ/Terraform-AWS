@@ -30,8 +30,10 @@ This repository is aim to create AWS Cloud Resources through Terraform and orche
 
 ## 2. Prerequisite
 
-- Access key ID & Secret Access Key of that account
-- An AWS IAM role with S3 permissions
+- A GitHub account
+    - Access key ID & Secret Access Key of that account
+    - An AWS IAM role with S3 permissions
+- A Terraform Cloud account
 - Need to install `Keybase` in our local
 
 ---
@@ -77,12 +79,10 @@ This repository is aim to create AWS Cloud Resources through Terraform and orche
 - Commit to source control
 
 But for now, The command currently can only import one resource at a time. This means you can't yet point Terraform
-imports to an entire collection of resources such as an AWS VPC and import all of it. This workflow will be improved in a
-future version of Terraform.
+imports to an entire collection of resources such as an AWS VPC and import all of it. This workflow will be improved in
+a future version of Terraform.
 
 ### CI/CD on Git Action
-
-
 
 For bulk import run `import_user.sh`:
 
