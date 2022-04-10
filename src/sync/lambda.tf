@@ -22,10 +22,13 @@ resource "aws_lambda_function" "meta_schedule_lambda" {
   handler          = var.lambda_handler
   runtime          = var.lambda_runtime
   role             = aws_iam_role.iam_role_for_lambda.arn
-  source_code_hash  = data.archive_file.zip_the_python_code.output_base64sha256
+  source_code_hash = data.archive_file.zip_the_python_code.output_base64sha256
   environment {
     variables = {
-      foo        = var.tags.foo
+      SOURCE_BUCKET  = var.source_bucket
+      SOURCE_FOLDER  = "data/"
+      TARGET_BUCKET = var.target_bucket
+      TARGET_FOLDER = "downloads/common/"
     }
   }
 }

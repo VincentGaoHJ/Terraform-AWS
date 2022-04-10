@@ -24,11 +24,13 @@ provider "aws" {
 
 module "s3" {
   source      = "./src/s3"
-  bucket_name = "meta-trading-vincent-s3-bucket-demo" # bucket name should be unique
+  bucket_name = var.s3_bucket_name
 }
 
 
 module "sync" {
-  source = "./src/sync"
-  function_name   = "scheduled-lambda-meta"
+  source         = "./src/sync"
+  function_name  = "scheduled-lambda-meta"
+  source_bucket  = var.source_bucket
+  target_bucket = var.s3_bucket_name
 }

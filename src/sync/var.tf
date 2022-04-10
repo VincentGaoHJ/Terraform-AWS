@@ -1,11 +1,12 @@
-variable "function_name" {
-  type        = string
-  description = "Used for lambda function name, role prefix, etc"
-}
+variable "function_name" {}
+
+variable "source_bucket" {}
+
+variable "target_bucket" {}
 
 variable "source_directory" {
   type    = string
-  default = "./src/sync/src"
+  default = "src"
 }
 
 variable "schedule_expression" {
@@ -41,7 +42,7 @@ variable "lambda_layers" {
 variable "lambda_handler" {
   type        = string
   description = "Lambda Parameter - Handler reference, e.x. index.lambda_handler"
-  default     = "schedule_sync.handler"
+  default     = "schedule_sync.lambda_handler"
 }
 
 variable "maximum_retry_attempts" {
