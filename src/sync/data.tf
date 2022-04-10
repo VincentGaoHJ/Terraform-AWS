@@ -12,3 +12,9 @@ data "aws_iam_policy_document" "lambda_permissions" {
     ]
   }
 }
+
+data "archive_file" "zip_the_python_code" {
+  type        = "zip"
+  source_dir  = var.source_directory
+  output_path = var.builds_dir
+}
