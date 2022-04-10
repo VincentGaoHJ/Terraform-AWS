@@ -25,8 +25,7 @@ resource "aws_lambda_function" "meta_schedule_lambda" {
   source_code_hash = filebase64sha256(var.builds_dir)
   environment {
     variables = {
-      tags        = tomap(var.tags)
-      tags_lambda = tomap(var.tags_lambda)
+      foo        = var.tags.foo
     }
   }
 }
@@ -34,7 +33,7 @@ resource "aws_lambda_function" "meta_schedule_lambda" {
 resource "aws_cloudwatch_event_rule" "rule" {
   name                = var.function_name
   schedule_expression = var.schedule_expression
-  tags                = var.tags
+  tags                = var.tags.foo
 }
 
 

@@ -51,15 +51,19 @@ variable "maximum_retry_attempts" {
 }
 
 variable "tags" {
-  type        = string
+  type        = map(any)
   description = "Tags to be applied to any resource that accepts tags.  Default is {}"
-  default     = jsonencode({ foo = "bar" })
+  default     = {
+    foo = "bar"
+  }
 }
 
 variable "tags_lambda" {
   type        = map(any)
   description = "Tags to be applied only to the lambda function.  Default is {}"
-  default     = jsonencode({ function = "lambda" })
+  default     = {
+    function = "lambda"
+  }
 }
 
 variable "builds_dir" {
