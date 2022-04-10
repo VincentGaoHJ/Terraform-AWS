@@ -11,5 +11,5 @@ variable "s3_bucket_name" {
 }
 
 variable "source_bucket" {
-  default = 'meta-trading-vincent-source-s3-for-sync'
+  default = "meta-trading-vincent-source-s3-for-sync"
 }

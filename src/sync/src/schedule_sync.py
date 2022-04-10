@@ -47,6 +47,7 @@ def lambda_handler(event, context):
     target_folder = os.environ['TARGET_FOLDER']
 
     copy_source_lst = list_bucket_file(bucket=source_bucket, folder=source_folder)
+    # target_source_lst = list_bucket_file(bucket=target_folder, folder=target_folder)
 
     for copy_source in copy_source_lst:
         sync_file(target_bucket, target_folder, copy_source)
