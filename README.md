@@ -77,8 +77,12 @@ This repository is aim to create AWS Cloud Resources through Terraform and orche
 - Commit to source control
 
 But for now, The command currently can only import one resource at a time. This means you can't yet point Terraform
-import to an entire collection of resources such as an AWS VPC and import all of it. This workflow will be improved in a
+imports to an entire collection of resources such as an AWS VPC and import all of it. This workflow will be improved in a
 future version of Terraform.
+
+### CI/CD on Git Action
+
+
 
 For bulk import run `import_user.sh`:
 
@@ -121,3 +125,5 @@ Below are some technical debt during the implementation:
 - [How To Create AWS S3 Bucket Using Terraform](https://www.bacancytechnology.com/blog/aws-s3-bucket-using-terraform)
 - [A Terraform module that creates a tagged S3 bucket and an IAM user/key with access to the bucket](https://github.com/turnerlabs/terraform-s3-user)
 - [How to Use PGP to Encrypt Your Terraform Secrets](https://menendezjaume.com/post/gpg-encrypt-terraform-secrets/)
+- [Developing a CI/CD pipeline to provision an AWS infrastructure using Terraform, GitHub, and Ubuntu 20.04](https://sasye.medium.com/developing-a-ci-cd-pipeline-to-provision-an-aws-infrastructure-using-terraform-github-and-ubuntu-3d74c58a373e)
+- [Automate Terraform with GitHub Actions](https://learn.hashicorp.com/tutorials/terraform/github-actions?in=terraform/automation)
