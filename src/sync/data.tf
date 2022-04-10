@@ -1,7 +1,5 @@
 data "aws_iam_policy_document" "lambda_permissions" {
   statement {
-    sid = "Buckets"
-
     actions = [
       "s3:ListBucket",
       "s3:GetObject",
