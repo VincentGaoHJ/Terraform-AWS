@@ -4,6 +4,14 @@ variable "source_bucket" {}
 
 variable "target_bucket" {}
 
+variable "source_folder" {
+  default = "data/"
+}
+
+variable "target_folder" {
+  default = "downloads/common/"
+}
+
 variable "source_directory" {
   type    = string
   default = "./src/sync/src"

@@ -3,12 +3,27 @@ data "aws_iam_policy_document" "lambda_permissions" {
     sid = "Buckets"
 
     actions = [
-      "s3:ListAllMyBuckets",
-      "s3:GetBucketLocation",
+      "s3:ListBucket",
+      "s3:GetObject",
     ]
 
     resources = [
-      "arn:aws:s3:::*",
+      "${var.source_bucket}/${var.source_folder}",
+      "${var.source_bucket}/${var.source_folder}/*",
+    ]
+  }
+
+  statement {
+    sid = "Buckets"
+
+    actions = [
+      "s3:ListBucket",
+      "s3:PutObject",
+    ]
+
+    resources = [
+      "${var.target_bucket}/${var.target_folder}",
+      "${var.target_bucket}/${var.target_folder}/*",
     ]
   }
 }

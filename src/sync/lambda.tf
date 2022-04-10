@@ -1,3 +1,7 @@
+resource "aws_iam_policy" "lambda_s3_policy" {
+  policy = data.aws_iam_policy_document.lambda_permissions.json
+}
+
 resource "aws_iam_role" "iam_role_for_lambda" {
   name               = "iam_role_for_lambda"
   assume_role_policy = jsonencode({
@@ -12,8 +16,8 @@ resource "aws_iam_role" "iam_role_for_lambda" {
         "Sid" : ""
       }
     ]
-  }
-  )
+  })
+  managed_policy_arns = [aws_iam_policy.lambda_s3_policy.arn]
 }
 
 resource "aws_lambda_function" "meta_schedule_lambda" {
@@ -25,10 +29,10 @@ resource "aws_lambda_function" "meta_schedule_lambda" {
   source_code_hash = data.archive_file.zip_the_python_code.output_base64sha256
   environment {
     variables = {
-      SOURCE_BUCKET  = var.source_bucket
-      SOURCE_FOLDER  = "data/"
+      SOURCE_BUCKET = var.source_bucket
+      SOURCE_FOLDER = var.source_folder
       TARGET_BUCKET = var.target_bucket
-      TARGET_FOLDER = "downloads/common/"
+      TARGET_FOLDER = var.target_folder
     }
   }
 }
