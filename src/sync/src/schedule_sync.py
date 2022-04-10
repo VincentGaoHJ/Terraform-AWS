@@ -5,3 +5,6 @@
 @Email  : vincentgaohj@gmail.com haojun.gao@u.nus.edu
 @Sketch : 
 """
+
+if __name__ == '__main__':
+    print('aaa')
