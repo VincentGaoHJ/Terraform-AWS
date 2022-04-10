@@ -25,8 +25,8 @@ resource "aws_lambda_function" "meta_schedule_lambda" {
   source_code_hash = filebase64sha256(var.builds_dir)
   environment {
     variables = {
-      tags        = map(var.tags)
-      tags_lambda = map(var.tags_lambda)
+      tags        = tomap(var.tags)
+      tags_lambda = tomap(var.tags_lambda)
     }
   }
 }
