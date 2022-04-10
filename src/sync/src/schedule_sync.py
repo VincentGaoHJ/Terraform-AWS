@@ -41,13 +41,12 @@ def lambda_handler(event, context):
 
     print('Event receive: ', event)
 
-    source_bucket = os.environ['SOURCE_BUCKET']
-    source_folder = os.environ['SOURCE_FOLDER']
-    target_bucket = os.environ['TARGET_BUCKET']
-    target_folder = os.environ['TARGET_FOLDER']
-
-    copy_source_lst = list_bucket_file(bucket=source_bucket, folder=source_folder)
+    copy_source_lst = list_bucket_file(
+        bucket=os.environ['SOURCE_BUCKET'], folder=os.environ['SOURCE_FOLDER'])
     # target_source_lst = list_bucket_file(bucket=target_folder, folder=target_folder)
 
     for copy_source in copy_source_lst:
-        sync_file(target_bucket, target_folder, copy_source)
+        sync_file(
+            target_bucket=os.environ['TARGET_BUCKET'],
+            target_folder=os.environ['TARGET_FOLDER'],
+            copy_source=copy_source)
