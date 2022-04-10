@@ -33,7 +33,7 @@ resource "aws_lambda_function" "meta_schedule_lambda" {
 resource "aws_cloudwatch_event_rule" "rule" {
   name                = var.function_name
   schedule_expression = var.schedule_expression
-  tags                = var.tags.foo
+  tags                = var.tags
 }
 
 
