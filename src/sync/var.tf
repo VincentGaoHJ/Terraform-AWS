@@ -14,12 +14,6 @@ variable "schedule_expression" {
   default     = "rate(1 day)"
 }
 
-variable "lambda_iam_policy" {
-  type        = string
-  description = "Lambda Parameter - IAM Policy, json-encoded"
-  default     = data.aws_iam_policy_document.lambda_permissions.json
-}
-
 variable "lambda_variables" {
   type        = map(any)
   default     = {}
