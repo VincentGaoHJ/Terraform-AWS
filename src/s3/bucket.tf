@@ -24,7 +24,7 @@ resource "aws_iam_access_key" "external_user_keys" {
 
 # Generate keys for internal user
 resource "aws_iam_access_key" "internal_user_keys" {
-  user = aws_iam_user.internal_user.name
+  user    = aws_iam_user.internal_user.name
   pgp_key = "keybase:vincentgaohj"
 }
 
