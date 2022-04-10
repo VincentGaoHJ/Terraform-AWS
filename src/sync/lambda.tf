@@ -37,14 +37,22 @@ resource "aws_lambda_function" "meta_schedule_lambda" {
   }
 }
 
-resource "aws_cloudwatch_event_rule" "rule" {
-  name                = var.function_name
+resource "aws_cloudwatch_event_rule" "every_one_day" {
+  name                = "every-one-day"
   schedule_expression = var.schedule_expression
   tags                = var.tags
 }
 
 
 resource "aws_cloudwatch_event_target" "target" {
-  rule = aws_cloudwatch_event_rule.rule.name
+  rule = aws_cloudwatch_event_rule.every_one_day.name
   arn  = aws_lambda_function.meta_schedule_lambda.arn
+}
+
+resource "aws_lambda_permission" "allow_cloudwatch_to_call_sync" {
+  statement_id  = "AllowExecutionFromCloudWatch"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.meta_schedule_lambda.function_name
+  principal     = "events.amazonaws.com"
+  source_arn    = aws_cloudwatch_event_rule.every_one_day.arn
 }

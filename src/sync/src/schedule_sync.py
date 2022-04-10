@@ -24,7 +24,8 @@ def sync_file(target_bucket, target_folder, copy_source):
     file_name = origin_key.split('/')[-1]
     target_key = os.path.join(target_folder, file_name)
     try:
-        response = s3.copy_object(Bucket=target_bucket, Key=target_key, CopySource=copy_source)
+        target_bucket_obj = s3.Bucket(target_bucket)
+        response = target_bucket_obj.copy(copy_source, target_key)
         return response['ContentType']
     except Exception as err:
         print("Error -" + str(err))
@@ -44,8 +45,13 @@ def lambda_handler(event, context):
     copy_source_lst = list_bucket_file(
         bucket=os.environ['SOURCE_BUCKET'], folder=os.environ['SOURCE_FOLDER'])
 
+    print('List of files await to be sync: ', copy_source_lst)
+
     for copy_source in copy_source_lst:
         sync_file(
             target_bucket=os.environ['TARGET_BUCKET'],
             target_folder=os.environ['TARGET_FOLDER'],
             copy_source=copy_source)
+        print('Successfully sync file: ', copy_source)
+
+    return "Mission Completed!"
