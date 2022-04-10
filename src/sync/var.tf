@@ -5,7 +5,7 @@ variable "function_name" {
 
 variable "source_directory" {
   type    = string
-  default = "./src"
+  default = "./src/sync/src"
 }
 
 variable "schedule_expression" {
