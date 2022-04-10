@@ -22,7 +22,6 @@ resource "aws_lambda_function" "meta_schedule_lambda" {
   runtime          = var.lambda_runtime
   role             = aws_iam_role.iam_role_for_lambda.arn
   filename         = var.builds_dir
-  source_code_hash = filebase64sha256(var.builds_dir)
   environment {
     variables = {
       foo        = var.tags.foo
