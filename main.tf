@@ -28,3 +28,7 @@ module "s3" {
 }
 
 
+module "sync" {
+  source = "./src/sync"
+  function_name   = "scheduled-lambda-meta"
+}

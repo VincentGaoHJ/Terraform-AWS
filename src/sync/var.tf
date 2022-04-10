@@ -1,9 +1,11 @@
-variable "name" {
+variable "function_name" {
   type        = string
   description = "Used for lambda function name, role prefix, etc"
 }
+
 variable "source_directory" {
-  type = string
+  type    = string
+  default = './src'
 }
 
 variable "schedule_expression" {
@@ -15,6 +17,7 @@ variable "schedule_expression" {
 variable "lambda_iam_policy" {
   type        = string
   description = "Lambda Parameter - IAM Policy, json-encoded"
+  default     = data.aws_iam_policy_document.lambda_permissions.json
 }
 
 variable "lambda_variables" {
@@ -32,6 +35,7 @@ variable "lambda_timeout" {
 variable "lambda_runtime" {
   type        = string
   description = "Lambda Parameter - Runtime.  E.x. python3.6"
+  default     = "python3.8"
 }
 
 variable "lambda_layers" {
@@ -43,6 +47,7 @@ variable "lambda_layers" {
 variable "lambda_handler" {
   type        = string
   description = "Lambda Parameter - Handler reference, e.x. index.lambda_handler"
+  default     = "schedule_sync.handler"
 }
 
 variable "maximum_retry_attempts" {
@@ -54,17 +59,21 @@ variable "maximum_retry_attempts" {
 variable "tags" {
   type        = map(any)
   description = "Tags to be applied to any resource that accepts tags.  Default is {}"
-  default     = {}
+  default     = {
+    foo = "bar"
+  }
 }
 
 variable "tags_lambda" {
   type        = map(any)
   description = "Tags to be applied only to the lambda function.  Default is {}"
-  default     = {}
+  default     = {
+    function = "lambda"
+  }
 }
 
 variable "builds_dir" {
   type        = string
   description = "The directory where the lambda zip should be built"
-  default     = "builds"
+  default     = "lambda_function_payload.zip"
 }

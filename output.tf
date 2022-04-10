@@ -28,7 +28,6 @@ output "external_user_iam_access_key_secret" {
   value = module.s3.external_user_iam_access_key_secret
 }
 
-
 //Multiple user list
 output "multiple_users" {
   value = module.s3.multiple_users
@@ -37,4 +36,10 @@ output "multiple_users" {
 // Policy for multiple created users
 output "multiple_user_policy_arn" {
   value = module.s3.multiple_user_policy_arn
+}
+
+
+// Lambda Arn
+output "meta_schedule_lambda_arn" {
+  value = module.sync.meta_schedule_lambda_arn
 }

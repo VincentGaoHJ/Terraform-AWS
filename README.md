@@ -127,3 +127,4 @@ Below are some technical debt during the implementation:
 - [How to Use PGP to Encrypt Your Terraform Secrets](https://menendezjaume.com/post/gpg-encrypt-terraform-secrets/)
 - [Developing a CI/CD pipeline to provision an AWS infrastructure using Terraform, GitHub, and Ubuntu 20.04](https://sasye.medium.com/developing-a-ci-cd-pipeline-to-provision-an-aws-infrastructure-using-terraform-github-and-ubuntu-3d74c58a373e)
 - [Automate Terraform with GitHub Actions](https://learn.hashicorp.com/tutorials/terraform/github-actions?in=terraform/automation)
+- [Deploying AWS Lambda with Terraform Quick Tutorial and Basic Concepts](https://lumigo.io/aws-lambda-deployment/aws-lambda-terraform/#lambdaalias)
