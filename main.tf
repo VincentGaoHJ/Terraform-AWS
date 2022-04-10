@@ -18,6 +18,10 @@ terraform {
   }
 }
 
+provider "aws" {
+  region = var.region
+}
+
 module "s3" {
   source      = "./src/s3"
   bucket_name = "meta-trading-vincent-s3-bucket-demo" # bucket name should be unique
